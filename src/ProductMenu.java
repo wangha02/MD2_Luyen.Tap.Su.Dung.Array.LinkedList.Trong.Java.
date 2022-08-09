@@ -14,7 +14,8 @@ public class ProductMenu {
         System.out.println("1. Add Product");
         System.out.println("2. Show Product");
         System.out.println("3. Remove Product");
-        System.out.println("4. Exit ");
+        System.out.println("4. Edit Product");
+        System.out.println("0. Exit ");
         return readMenu(0, 4);
 
     }
@@ -55,7 +56,7 @@ public class ProductMenu {
 
     private void removeProduct2() {
         System.out.println("Enter id Remove ");
-        int id = readMenu(0, Integer.MAX_VALUE);
+        int id = Integer.parseInt(scanner.nextLine());
         if (this.pm.removeProduct(id)) {
             System.out.println("OK nhe");
         } else {
@@ -63,28 +64,43 @@ public class ProductMenu {
         }
     }
 
-    public void begin() {
-        while (true) {
-            int choice = menu();
-            switch (choice) {
-                case 0:
-                    System.exit(0);
-                    break;
-                case 1:
-                    addProduct();
-                    break;
-                case 2:
-                    showProduct();
-                    break;
-                case 3:
-                    removeProduct2();
-                    break;
-                default:
-                    break;
-            }
-
-        }
+    private void editProduct2() {
+        System.out.println("Enter id Edit ");
+        int id = Integer.parseInt(scanner.nextLine());
+        System.out.println("Enter New Name Product: ");
+        String name = scanner.nextLine();
+        System.out.println("Enter New Price : ");
+        int price = readMenu(0, Integer.MAX_VALUE);
+        Product p = new Product(id, name, price);
+        this.pm.editProduct(id,p);
     }
 
-}
+
+        public void begin () {
+            while (true) {
+                int choice = menu();
+                switch (choice) {
+                    case 0:
+                        System.exit(0);
+                        break;
+                    case 1:
+                        addProduct();
+                        break;
+                    case 2:
+                        showProduct();
+                        break;
+                    case 3:
+                        removeProduct2();
+                        break;
+                    case 4:
+                        editProduct2();
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+
+            }
+        }
+
+    }
 

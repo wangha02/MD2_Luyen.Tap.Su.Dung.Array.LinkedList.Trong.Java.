@@ -38,4 +38,20 @@ public class ProductManager {
         }
         return false;
     }
+
+    public boolean editProduct(int id,Product p) {
+        int index = -1;
+        for (int i = 0; i < count(); i++) {
+            if (this.listOfProduct.get(i).getId() == id) {
+                index = i;
+                break;
+            }
+        }
+        if (index != -1) {
+            this.listOfProduct.set(index, p);
+            return true;
+        }
+        return false;
+    }
+
 }
