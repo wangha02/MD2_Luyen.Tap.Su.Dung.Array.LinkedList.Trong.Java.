@@ -29,7 +29,7 @@ public class ProductManager {
         int index = -1;
         for (int i = 0; i < count(); i++) {
             if (this.listOfProduct.get(i).getId() == id) {
-                index = id;
+                index = i;
                 break;
             }
         }
